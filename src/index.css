@@ -1,0 +1,262 @@
+/* Portfolio Design System - Professional & Modern */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 33% 4%;
+    --foreground: 213 31% 91%;
+    
+    /* Neon Theme Colors */
+    --neon-cyan: 180 100% 50%;
+    --neon-pink: 320 100% 70%;
+    --neon-green: 120 100% 50%;
+    --neon-blue: 240 100% 60%;
+    --neon-purple: 278 100% 60%;
+    --neon-orange: 30 100% 60%;
+    
+    /* Primary theme based on neon purple */
+    --primary: 278 100% 60%;
+    --primary-dark: 278 85% 50%;
+    --primary-light: 278 100% 80%;
+    
+    /* Dark Neon Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(278, 100%, 60%), hsl(320, 100%, 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(224, 33%, 4%) 0%, hsl(220, 39%, 8%) 50%, hsl(224, 39%, 12%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(224, 39%, 7%) 0%, hsl(220, 39%, 9%) 100%);
+    --gradient-neon: linear-gradient(45deg, hsl(180, 100%, 50%), hsl(320, 100%, 70%), hsl(278, 100%, 60%));
+    --gradient-glow: radial-gradient(circle, hsl(278, 100%, 60% / 0.3), transparent);
+    
+    /* Enhanced Glass Effect */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Neon Shadows */
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.4);
+    --shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 30px hsl(278, 100%, 60% / 0.5);
+    --shadow-neon-cyan: 0 0 20px hsl(180, 100%, 50% / 0.6);
+    --shadow-neon-pink: 0 0 20px hsl(320, 100%, 70% / 0.6);
+    
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Semantic tokens aligned with brand */
+    --card: 220 25% 98%;
+    --card-foreground: 220 15% 15%;
+    --popover: 220 25% 98%;
+    --popover-foreground: 220 15% 15%;
+    --primary-foreground: 220 25% 98%;
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 220 15% 15%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 15% 60%;
+    --accent: 235 85% 65%;
+    --accent-foreground: 220 25% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 25% 98%;
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 235 85% 65%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 224 33% 4%;
+    --foreground: 213 31% 91%;
+    --card: 224 39% 7%;
+    --card-foreground: 213 31% 91%;
+    --popover: 224 39% 7%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 278 100% 60%;
+    --primary-foreground: 224 33% 4%;
+    --secondary: 220 39% 11%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 220 39% 11%;
+    --muted-foreground: 218 11% 65%;
+    --accent: 220 39% 11%;
+    --accent-foreground: 213 31% 91%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 213 31% 91%;
+    --border: 220 39% 11%;
+    --input: 220 39% 11%;
+    --ring: 278 100% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer components {
+  /* Dark Neon Hero Background */
+  .hero-gradient {
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-glow);
+    opacity: 0.3;
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  /* Enhanced Glass Effect */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Floating animation with rotation */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Neon Skill Card Effects */
+  .skill-card {
+    transition: var(--transition-smooth);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-neon-cyan);
+    border-color: hsl(var(--neon-cyan));
+  }
+
+  /* Neon Button Styles */
+  .btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow), 0 0 40px hsl(var(--neon-purple) / 0.7);
+  }
+
+  /* Neon Text Effects */
+  .neon-text {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--neon-cyan));
+    white-space: nowrap;
+    animation: typewriter 4s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  /* Glow Button */
+  .glow-button {
+    background: var(--gradient-primary);
+    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .glow-button:hover {
+    box-shadow: 0 0 30px hsl(var(--neon-purple) / 0.8), 0 0 60px hsl(var(--neon-pink) / 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+@layer utilities {
+  /* Custom shadows using design tokens */
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-medium { box-shadow: var(--shadow-medium); }
+  .shadow-strong { box-shadow: var(--shadow-strong); }
+  
+  /* Smooth transitions */
+  .transition-smooth { transition: var(--transition-smooth); }
+  .transition-bounce { transition: var(--transition-bounce); }
+}
+
+/* Enhanced Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: hsl(var(--neon-cyan)); }
+}
+
+@keyframes neon-flicker {
+  0%, 100% { 
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
+    opacity: 1;
+  }
+  50% { 
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor;
+    opacity: 0.8;
+  }
+}
+
+/* Cursor Trail Effect */
+.cursor-trail {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, hsl(var(--neon-cyan)) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  z-index: 9999;
+}
